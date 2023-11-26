@@ -1,34 +1,27 @@
 package org.homework.java;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
 
-    private List<Player> players;
+    private Map<String,Player> players;
 
     public Game(){
-        players = new ArrayList<>();
+        players =  new HashMap<>();
     }
 
     public void register(Player player){
-        players.add(player);
+        players.put(player.getName(),player);
     }
 
-
-    private Player findPlayerByName(String name) {
-        for (Player player : players) {
-            if (player.getName().equals(name)) {
-                return player;
-            }
-        }
-        return null;
-    }
 
 
     public int round(String playerName1, String playerName2) {
-        Player player1 = findPlayerByName(playerName1);
-        Player player2 = findPlayerByName(playerName2);
+        Player player1 = players.get(playerName1);
+        Player player2 = players.get(playerName2);
 
         if (player1 == null || player2 == null) {
             throw new NotRegisteredException("Один или оба игрока не зарегестрированы!");

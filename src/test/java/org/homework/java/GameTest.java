@@ -44,7 +44,7 @@ class GameTest {
 
         int result = game.round("Player1", "Player2");
 
-        assertEquals(0, result);
+        Assertions.assertEquals(0, result);
     }
 
     @Test
